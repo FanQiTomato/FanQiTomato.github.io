@@ -1,14 +1,14 @@
 /* 导入字体 */
 @font-face {
     font-family: 'ShangguSansSC';
-    src: url('./font/ShangguSansSC/ShangguSansSC-Regular.otf') format('opentype');
+    src: url('/font/ShangguSansSC/ShangguSansSC-Regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'ShangguSansSC';
-    src: url('./font/ShangguSansSC/ShangguSansSC-Bold.otf') format('opentype');
+    src: url('/font/ShangguSansSC/ShangguSansSC-Bold.otf') format('opentype');
     font-weight: bold;
     font-style: normal;
 }
