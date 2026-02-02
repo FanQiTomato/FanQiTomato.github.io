@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', function() {
     // 添加输入框的键盘事件监听
     const levelInput = document.querySelector('.level-input');
     if (levelInput) {
-        levelInput.addEventListener('keydown', function(e) {
+        levelInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 handleEnterPress();
             }
@@ -27,6 +27,8 @@ function handleEnterPress() {
             levelInput.value = '';
             levelSubtitle.textContent = '密码正确，但请输入正确的密码';
             addShakeAnimation(levelBox);
+            // 重新聚焦到输入框
+            levelInput.focus();
         }
     } else if (levelSubtitle.textContent === '密码正确，但请输入正确的密码') {
         if (levelInput.value === '正确的密码') {
