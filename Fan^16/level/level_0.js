@@ -1,5 +1,16 @@
 // 关卡特定的脚本文件 - 包含关卡特定的功能
 
+// 页面加载完成后初始化
+window.addEventListener('DOMContentLoaded', function() {
+    // 为"开始"按钮添加点击事件
+    const startBtn = document.querySelectorAll('.nav-btn')[0];
+    if (startBtn) {
+        startBtn.addEventListener('click', function() {
+            window.location.href = 'level_1.html';
+        });
+    }
+});
+
 // 加载游戏信息的函数
 function loadGameInfo() {
     const infoContent = document.querySelector('.info-content');
@@ -30,13 +41,15 @@ function displayGameInfo(data) {
     
     // 处理正文中的换行符
     const contentWithBreaks = data.content.replace(/\n/g, '<br>');
+    // 处理提示中的换行符
+    const tipWithBreaks = data.tip.replace(/\n/g, '<br>');
     
     let html = `
         <div class="info-container">
             <div class="top-left">
                 <h2 class="info-title">${data.title}</h2>
                 <div class="info-content-text">${contentWithBreaks}</div>
-                <div class="info-tip">${data.tip}</div>
+                <div class="info-tip">${tipWithBreaks}</div>
             </div>
             <div class="bottom-left">
                 <div class="fan-value">Fan值: ${data.fanValue}</div>
