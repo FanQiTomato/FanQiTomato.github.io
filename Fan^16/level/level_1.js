@@ -21,14 +21,17 @@ function handleEnterPress() {
     
     if (!levelInput || !levelBox || !levelSubtitle) return;
     
-    // 检查输入内容是否为"密码"（无空格）
-    if (levelInput.value === '密码') {
-        // 清空输入框
-        levelInput.value = '';
-        // 修改小标题
-        levelSubtitle.textContent = '密码正确，但请输入正确的密码';
-        // 添加抖动动画
-        addShakeAnimation(levelBox);
+    // 检查当前小标题状态
+    if (levelSubtitle.textContent === '请输入密码') {
+        if (levelInput.value === '密码') {
+            levelInput.value = '';
+            levelSubtitle.textContent = '密码正确，但请输入正确的密码';
+            addShakeAnimation(levelBox);
+        }
+    } else if (levelSubtitle.textContent === '密码正确，但请输入正确的密码') {
+        if (levelInput.value === '正确的密码') {
+            window.location.href = 'YOU_WIN.html';
+        }
     }
 }
 
