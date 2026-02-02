@@ -234,6 +234,7 @@ h1 sup {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'ShangguSansSC', sans-serif;
     color: #ffffff;
     padding: 40px;
     overflow-y: auto;
