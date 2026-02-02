@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fan^16 - 恭喜通关</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .win-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .win-text {
+            font-size: clamp(2rem, 10vw, 5rem);
+            font-weight: bold;
+            color: #2E5E4E;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient"></div>
+    <div class="info-btn">
+        <svg class="info-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <svg class="close-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </div>
+    <div class="win-container">
+        <div class="win-text">恭喜通关</div>
+    </div>
+    <div class="info-panel">
+        <div class="info-content"></div>
+    </div>
+    <script src="../common_script.js"></script>
+    <script src="YOU_WIN.js"></script>
+</body>
+</html>
