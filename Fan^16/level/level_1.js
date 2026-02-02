@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', function() {
     // 添加输入框的键盘事件监听
     const levelInput = document.querySelector('.level-input');
     if (levelInput) {
-        levelInput.addEventListener('keypress', function(e) {
+        levelInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 handleEnterPress();
             }
