@@ -412,3 +412,29 @@ h1 sup {
 .level-input::placeholder {
     color: rgba(46, 94, 78, 0.5);
 }
+
+/* 抖动动画 */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    16.7% {
+        transform: translateX(-96px);
+    }
+    33.3% {
+        transform: translateX(48px);
+    }
+    50% {
+        transform: translateX(-24px);
+    }
+    66.7% {
+        transform: translateX(12px);
+    }
+    83.3% {
+        transform: translateX(-6px);
+    }
+}
+
+.shake {
+    animation: shake 0.3s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
