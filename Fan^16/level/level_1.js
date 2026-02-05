@@ -5,9 +5,9 @@ window.addEventListener('DOMContentLoaded', function() {
     if (levelBox) {
         levelBox.style.opacity = '0';
         levelBox.style.transform = 'translateY(-50%)';
-        levelBox.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         
         setTimeout(() => {
+            levelBox.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             levelBox.style.opacity = '1';
             levelBox.style.transform = 'translateY(0)';
             
