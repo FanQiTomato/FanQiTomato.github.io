@@ -1,5 +1,18 @@
 window.addEventListener('DOMContentLoaded', function() {
     const levelInput = document.querySelector('.level-input');
+    const levelBox = document.querySelector('.level-box');
+    
+    if (levelBox) {
+        levelBox.style.opacity = '0';
+        levelBox.style.transform = 'translateY(-50%)';
+        levelBox.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        setTimeout(() => {
+            levelBox.style.opacity = '1';
+            levelBox.style.transform = 'translateY(0)';
+        }, 100);
+    }
+    
     if (levelInput) {
         levelInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
