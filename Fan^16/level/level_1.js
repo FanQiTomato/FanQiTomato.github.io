@@ -10,6 +10,10 @@ window.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             levelBox.style.opacity = '1';
             levelBox.style.transform = 'translateY(0)';
+            
+            setTimeout(() => {
+                levelBox.style.transition = '';
+            }, 500);
         }, 100);
     }
     
