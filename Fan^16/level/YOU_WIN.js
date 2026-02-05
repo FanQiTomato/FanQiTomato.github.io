@@ -22,7 +22,7 @@ function displayGameInfo(data) {
     const infoContent = document.querySelector('.info-content');
     if (!infoContent) return;
     
-    const contentWithBreaks = data.content.replace(/\n/g, '<br>');
+    const contentWithBreaks = (data.content + '\n').replace(/\n/g, '<br>');
     const tipWithBreaks = data.tip.replace(/\n/g, '<br>');
     
     let html = `
