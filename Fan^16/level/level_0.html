@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fan^16</title>
+    <link rel="icon" href="../Fan16.png" type="image/png">
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .level-select-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.8s cubic-bezier(0.1, 0.8, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .level-select-container {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .level-select-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .level-select-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2E5E4E;
+            text-align: left;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #2E5E4E;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            background-color: rgba(46, 94, 78, 0.1);
+        }
+        
+        .level-buttons-container {
+            flex: 1;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 15px;
+            padding: 0;
+            justify-items: start;
+        }
+        
+        .level-button {
+            width: 80px;
+            height: 80px;
+            border: none;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(46, 94, 78, 0.2);
+        }
+        
+        .level-button:hover {
+            background: rgba(46, 94, 78, 1);
+        }
+        
+        .level-button:hover .level-number {
+            color: #ffffff;
+        }
+        
+        .level-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2E5E4E;
+            transition: all 0.3s ease;
+        }
+        
+        .level-check {
+            margin-top: 5px;
+            width: 16px;
+            height: 16px;
+            background-color: #2E5E4E;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .level-check::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            width: 4px;
+            height: 8px;
+            border-right: 2px solid #ffffff;
+            border-bottom: 2px solid #ffffff;
+        }
+        
+        /* 自定义滚动条 */
+        .level-buttons-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .level-buttons-container::-webkit-scrollbar-track {
+            background: rgba(46, 94, 78, 0.1);
+            border-radius: 8px;
+        }
+        
+        .level-buttons-container::-webkit-scrollbar-thumb {
+            background: rgba(46, 94, 78, 0.5);
+            border-radius: 8px;
+        }
+        
+        .level-buttons-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(46, 94, 78, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient"></div>
+    <div class="info-btn">
+        <svg class="info-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <svg class="close-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </div>
+    <div class="container">
+        <div class="header animate-title">
+            <h1>Fan<sup>16</sup></h1>
+        </div>
+        <div class="nav-buttons animate-buttons">
+            <button class="nav-btn">开始</button>
+            <button class="nav-btn">选关</button>
+        </div>
+    </div>
+    <div class="info-panel">
+        <div class="info-content"></div>
+    </div>
+    <div class="level-select-panel">
+        <div class="level-select-container">
+            <div class="level-select-header">
+                <h2 class="level-select-title">选关</h2>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="level-buttons-container">
+                <!-- 关卡按钮将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+    <script src="../common_script.js"></script>
+    <script src="level_0.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            const startBtn = document.querySelectorAll('.nav-btn')[0];
+            const selectBtn = document.querySelectorAll('.nav-btn')[1];
+            const levelSelectPanel = document.querySelector('.level-select-panel');
+            const closeBtn = document.querySelector('.close-btn');
+            const levelButtonsContainer = document.querySelector('.level-buttons-container');
+            
+            if (startBtn) {
+                startBtn.addEventListener('click', function() {
+                    window.location.href = 'level_1.html';
+                });
+            }
+            
+            if (selectBtn) {
+                selectBtn.addEventListener('click', function() {
+                    levelSelectPanel.style.transform = 'translateY(0)';
+                    loadLevels();
+                });
+            }
+            
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    levelSelectPanel.style.transform = 'translateY(100%)';
+                });
+            }
+            
+            function loadLevels() {
+                fetch('../levels.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        renderLevelButtons(data.levels);
+                    })
+                    .catch(error => {
+                        console.error('Error loading levels:', error);
+                        levelButtonsContainer.innerHTML = '<div style="text-align: center; color: #2E5E4E; margin-top: 50px;">加载关卡失败</div>';
+                    });
+            }
+            
+            function renderLevelButtons(levels) {
+                if (!levelButtonsContainer) return;
+                
+                levelButtonsContainer.innerHTML = '';
+                
+                levels.forEach(level => {
+                    const button = document.createElement('div');
+                    button.className = 'level-button';
+                    
+                    button.innerHTML = `
+                        <div class="level-number">${level.id.toString().padStart(2, '0')}</div>
+                    `;
+                    
+                    button.addEventListener('click', function() {
+                        window.location.href = level.path;
+                    });
+                    
+                    levelButtonsContainer.appendChild(button);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
