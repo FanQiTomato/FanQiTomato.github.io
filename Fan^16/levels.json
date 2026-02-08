@@ -1,0 +1,19 @@
+{
+  "levels": [
+    {
+      "id": 1,
+      "name": "Level 1",
+      "path": "level_1.html"
+    },
+    {
+      "id": 2,
+      "name": "Level 2",
+      "path": "level_2.html"
+    },
+    {
+      "id": 3,
+      "name": "Level 3",
+      "path": "level_3.html"
+    }
+  ]
+}
